@@ -51,27 +51,32 @@ const render = () => {
 store.subscribe(render)
 
 
-incrementInputField.addEventListener('keyup', function (event) {
-    if (event.keyCode === 13) {
-        const incrementValue = parseInt(incrementInputField.value)
-        store.dispatch({
-            type: "increment",
-            payload: incrementValue
-        })
-        incrementInputField.value = ""
-        console.log(incrementValue)
-    }
+incrementInputField.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    const increaseInput = document.getElementById('incrementInput')
+    const increaseValue = parseInt(increaseInput.value)
+    increaseInput.value = ""
+
+    store.dispatch({
+        type: "increment",
+        payload: increaseValue
+    })
 })
 
-decrementInputField.addEventListener('keyup', function (event) {
-    if (event.keyCode === 13) {
-        const decrementValue = parseInt(decrementInputField.value)
-        store.dispatch({
-            type: "decrement",
-            payload: decrementValue
-        })
-        decrementInputField.value = ""
-    }
+decrementInputField.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    const decreaseInput = document.getElementById('decrementInput')
+    const decreaseValue = parseInt(decreaseInput.value)
+    decreaseInput.value = ""
+
+    store.dispatch({
+        type: "decrement",
+        payload: decreaseValue
+    })
+
+
 })
 
 
